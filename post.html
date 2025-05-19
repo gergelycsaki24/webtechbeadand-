@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="post.css">
+    <title>Add New Car</title>
+    
+</head>
+<body>
+        <h1>Add New Car</h1>
+        <form id="carForm">
+            <div class="form-group">
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <input type="text" id="model" required>
+            </div>
+            
+
+            <div class="form-group">
+                <label for="engineType">Engine Type:</label>
+                <select id="engineType" required>
+                    <option value="gas">Gas Powered</option>
+                    <option value="electric">Electric</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fuelUse">Fuel Use (L/100km):</label>
+                <input type="text" id="fuelUse" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dayOfCommission">Commission Date:</label>
+                <input type="date" id="dayOfCommission" required>
+            </div>
+
+            <div class="form-group">
+                <label for="owner">Owner:</label>
+                <input type="text" id="owner" required>
+            </div>
+            
+ 
+            
+            
+            <button type="submit">Add Car</button>
+        </form>
+        
+        <div id="response"></div>
+
+    <script src="post.js">
+       
+    </script>
+</body>
+</html>
