@@ -4,7 +4,6 @@ const params = new URLSearchParams(window.location.search);
     const carId = params.get('id');
 
 function CreateElement(car) {
-    console.log("lefutott:", car);
     return `
                 <div class="car-card">
                     <div class="car-header">
@@ -40,22 +39,16 @@ function CreateElement(car) {
 
 async function render() {
     
-    const url = `https://iit-playground.arondev.hu/api/XVUF92/car/${carId}`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(`https://iit-playground.arondev.hu/api/XVUF92/car/${carId}`);
       if (!response.ok) {
         window.location.href="index.html";
       }
     
       const json = await response.json();
-      
-      console.log(json);
 
       const carElement = CreateElement(json);
       elem.innerHTML = carElement;
-      
-
-
     } catch (error) {
       console.error(error);
     }
@@ -71,12 +64,9 @@ async function Delete(){
     if (result.success) {
         window.location.href="index.html"
     }else{            
-        console.log(result)
         document.getElementById('response').innerHTML = 
-            `<strong>❌ Error:</strong> ${result.message}`;
-        document.getElementById('response').style.background = '#ffdddd';
+            `<strong style="color:red ">Error:</strong> ${result.message}`;
     }
-    console.log(result)
 
 }
 

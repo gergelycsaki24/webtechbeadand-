@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="post.css">
-    <title>Add New Car</title>
+    <title>Modify Car</title>
     
 </head>
 <body>
-        <h1>Add New Car</h1>
+        <h1>Modify Car</h1>
         <form id="carForm">
             <div class="form-group">
                 <label for="brand">Brand:</label>
@@ -44,10 +44,11 @@
                 <input type="text" id="owner" required>
             </div>
             
- 
-            
-            
-            <button type="submit">Add Car</button>
+            <div class="form-group">
+                <button type="submit">Modify Car</button>
+            </div>
+
+            <button onclick="window.location.href='index.html'">Back to homepage</button>
         </form>
         
         <div id="response"></div>

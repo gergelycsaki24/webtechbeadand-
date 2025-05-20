@@ -1,87 +1,142 @@
-.car-container {
+body {
+    background-color: #000;
+    color: #4fc3f7;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+  }
+  
+  .car-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.car-card {
-    border: 1px solid #e1e1e1;
+  }
+  
+  .car-card {
+    border: 1px solid #333;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
-}
-
-.car-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.car-header {
+    background: #111;
+    transition: all 0.2s ease;
+  }
+  
+  .car-card:hover {
+    border-color: #444;
+    background: #1a1a1a;
+  }
+  
+  .car-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.car-title {
+    
+  }
+  
+  .car-title {
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0;
-    color: #333;
-}
-
-.car-id {
-    background: #f0f0f0;
+    color: #4fc3f7;
+  }
+  
+  .car-id {
+    background: #333;
     padding: 3px 8px;
     border-radius: 12px;
     font-size: 0.75rem;
-    color: #666;
-}
-
-.car-details {
+    color: #b39ddb;
+  }
+  
+  .car-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-}
-
-.detail-item {
+  }
+  
+  .detail-item {
     margin-bottom: 8px;
-}
-
-.detail-label {
+  }
+  
+  .detail-label {
     font-size: 0.8rem;
-    color: #777;
+    color: #81c784;
     display: block;
-}
-
-.detail-value {
+  }
+  
+  .detail-value {
     font-weight: 500;
-    color: #333;
-}
-
-.electric-tag {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background-color: #4CAF50;
-    color: white;
-}
-
-.fuel-tag {
-    background-color: #2196F3;
-}
-
-header{
-    display:flex;
-    flex-direction: row;
+    color: #ffb74d;
+  }
+  
+  header {
+    display: flex;
     justify-content: space-between;
-}
+    padding: 15px 20px;
+    background: #000;
+    border-bottom: 1px solid #333;
+  }
+
+  .button-add {
+    background: #2962ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .button-add:hover {
+    background: #0039cb;
+  }
+
+  .button-modify {
+    background-color: #ffeb3b;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .button-modify:hover {
+    background-color: #fdd835;
+  }
+  
+  .button-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .button-delete:hover {
+    background-color: #d32f2f;
+  }
+
+  .button-back {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .button-back:hover {
+    background-color: #555;
+  }

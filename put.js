@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get DOM elements
     const carForm = document.getElementById('carForm');
     const engineType = document.getElementById('engineType');
     const fuelUse = document.getElementById('fuelUse');
     const responseDiv = document.getElementById('response');
 
-    // Function to handle engine type change
     function updateFuelInput() {
-        console.log('Engine type changed to:', engineType.value);
         if (engineType.value === 'electric') {
             fuelUse.value = 0;
             fuelUse.disabled = true;
@@ -17,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Set up event listener for engine type changes
     engineType.addEventListener('change', updateFuelInput);
 
-    // Get car ID from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('id');
     
@@ -28,9 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href="index.html";
     }
     
-    
-    
-    // Fetch car data and populate form
     fetch(`https://iit-playground.arondev.hu/api/XVUF92/car/${carId}`)
         .then(response => {
             if (!response.ok) {
@@ -39,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(car => {
-            console.log(car.dayOfCommission);
+
             document.getElementById('brand').value = car.brand;
             document.getElementById('model').value = car.model;
             document.getElementById('engineType').value = car.electric ? 'electric' : 'gas';
@@ -48,14 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dayOfCommission').value = car.dayOfCommission;
             document.getElementById('owner').value = car.owner;
             
-            // Update fuel input based on initial engine type
-            
         })
         .catch(error => {
             responseDiv.innerHTML = `Error: ${error.message}`;
         });
         
-    // Handle form submission
     carForm.addEventListener('submit', async(e) => {
         e.preventDefault();
         
@@ -73,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const fuelValue = fuelUse.value.trim();
             if (fuelValue === '' || isNaN(fuelValue)) {
                 document.getElementById('response').innerHTML = 
-                    `<strong>❌ Error:</strong> Fuel usage must be a valid number`;
-                document.getElementById('response').style.background = '#ffdddd';
-                return; // Don't proceed with the request
+                    `<strong style="color: red;">Error:</strong> Fuel usage must be a valid number`;
+                
+                return;
             }
         }
         
@@ -89,19 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const result = await response.json();
         if (result.id) {
             document.getElementById('response').innerHTML = 
-            `<strong>✅ Success!</strong> Car added (ID: ${result.id})`;
-        document.getElementById('response').style.background = '#ddffdd';
+            `<strong style="color: green;">Success!</strong> Car modified (ID: ${result.id})`;
         
-
-        //carForm.reset();
         fuelUse.disabled = engineType.value === 'electric';
         if (engineType.value === 'electric') fuelUse.value = 0;
         }
         else{            
-            console.log(result)
             document.getElementById('response').innerHTML = 
-                `<strong>❌ Error:</strong> ${result.message}`;
-            document.getElementById('response').style.background = '#ffdddd';
+                `<strong style="color: red;">Error:</strong> ${result.message}`;
         }
     });
 });

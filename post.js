@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updateFuelInput() {
-        console.log('Engine type changed to:', engineType.value);
         if (engineType.value === 'electric') {
             fuelUse.value = 0;
             fuelUse.disabled = true;
@@ -14,12 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
             fuelUse.disabled = false;
         }
     };
+
         engineType.addEventListener('change', updateFuelInput);
         
-    
-
-
-
     if (carForm) {
         carForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -37,27 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 const fuelValue = fuelUse.value.trim();
                 if (fuelValue === '' || isNaN(fuelValue)) {
                     document.getElementById('response').innerHTML = 
-                        `<strong>❌ Error:</strong> Fuel usage must be a valid number`;
-                    document.getElementById('response').style.background = '#ffdddd';
-                    return; // Don't proceed with the request
+                        `<strong style=" color:red ">Error:</strong> Fuel usage must be a valid number`;
+                    return;
                 }
             }
-               
 
-            console.log(carData);
-            
-            
                 const response = await fetch('https://iit-playground.arondev.hu/api/XVUF92/car', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(carData)
                 });
-                console.log(response.body)
                 const result = await response.json();
                 if (response.ok) {
                     document.getElementById('response').innerHTML = 
-                    `<strong>✅ Success!</strong> Car added (ID: ${result.id})`;
-                document.getElementById('response').style.background = '#ddffdd';
+                    `<strong style="color: green">Success!</strong> Car added (ID: ${result.id})`;
                 
   
                 carForm.reset();
@@ -65,10 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (engineType.value === 'electric') fuelUse.value = 0;
                 }
                 else{            
-                    console.log(result)
                     document.getElementById('response').innerHTML = 
-                        `<strong>❌ Error:</strong> ${result.message}`;
-                    document.getElementById('response').style.background = '#ffdddd';
+                        `<strong style="color: red">Error:</strong> ${result.message}`;
                 }
 
         });
